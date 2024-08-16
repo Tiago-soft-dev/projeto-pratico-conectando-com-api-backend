@@ -9,7 +9,7 @@ import { Api } from './Api'
 
 function App() {
   const notify = {
-    delete: () => toast('Removido')
+    delete: (nome) => toast(nome + ' foi removido!')
   }
 
   const [devmons, setDevmons] = useState([])
@@ -24,16 +24,16 @@ function App() {
     fetchData()
   }, [])
 
-  const deleteComponent = (id) => {
+  const deleteComponent = (id, nome) => {
     const data = devmons.filter((devmon) => devmon._id !== id)
     setDevmons(data)
-    notify.delete('oi')
+    notify.delete(nome)
   }
 
   return (
     <>
       <div className='container'>
-        <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+        <ToastContainer position="top-right" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         {devmons.map((devmon, index) => (
 
           <Card key={devmon._id} item={devmon} index={index} deleteComponent={deleteComponent} />
