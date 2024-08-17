@@ -30,13 +30,15 @@ function App() {
     notify.delete(nome)
   }
 
+  Api.deleteDataApi()
+
   return (
     <>
       <div className='container'>
         <ToastContainer position="top-right" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         {devmons.map((devmon, index) => (
 
-          <Card key={devmon._id} item={devmon} index={index} deleteComponent={deleteComponent} />
+          <Card key={devmon._id} item={devmon} index={index} deleteComponent={deleteComponent} deleteDataApi={Api.deleteDataApi}/>
         ))}
 
       </div>
